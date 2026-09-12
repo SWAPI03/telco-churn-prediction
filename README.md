@@ -40,5 +40,5 @@ rename the CSV to `telco_churn.csv`, and place it in `data/raw/`.
 
 ## Progress
 - [x] Day 1: project setup, data loading, exploratory data analysis
-- [ ] Day 2: preprocessing, feature engineering, baseline models
+- [x] Day 2: preprocessing, feature engineering, baseline models
 - [ ] Day 3: model tuning, evaluation, Streamlit app
