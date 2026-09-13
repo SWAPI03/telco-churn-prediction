@@ -44,6 +44,21 @@ def prepare_data(df: pd.DataFrame):
     return X, y
 
 
+def clean_data(df: pd.DataFrame) -> pd.DataFrame:
+    """Clean the raw data WITHOUT one-hot encoding.
+
+    Drops ``customerID``, makes ``TotalCharges`` numeric, and maps ``Churn`` to
+    0/1, but leaves the categorical columns as text. This is the input for the
+    Day 3 pipeline, which does the encoding internally, so the saved model can
+    accept a raw customer record at prediction time.
+    """
+    df = df.copy()
+    df = df.drop(columns=["customerID"])
+    df = clean_total_charges(df)
+    df["Churn"] = df["Churn"].map({"No": 0, "Yes": 1})
+    return df
+
+
 def split_data(X, y, test_size: float = 0.2, random_state: int = 42):
     """Stratified train/test split.
 
